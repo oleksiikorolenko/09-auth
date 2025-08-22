@@ -12,3 +12,22 @@ export type NewNoteData = {
   content: string;
   tag: string;
 }
+
+export interface FetchNotesParams {
+    page?: number;
+    perPage?: number;
+    search?: string;
+    tag?: string;
+}
+
+export interface FetchNotesResponse {
+    page: number;
+    data: Note[];
+    total_pages: number;
+    perPage: number;
+}
+
+export interface RawFetchNotesResponse {
+  notes: Note[];
+  totalPages: number;
+}
