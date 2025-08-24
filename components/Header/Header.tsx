@@ -23,6 +23,7 @@ const Header = () => {
             <Link href="/">Home</Link>
           </li>
           <TagsMenu />
+          <AuthNavigation/>
         </ul>
       </nav>
     </header>
