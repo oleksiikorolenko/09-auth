@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { api } from "./api";
-import { User, FetchNotesParams, FetchNotesResponse, RawFetchNotesResponse, Note} from "@/types/note";
+import { FetchNotesParams, FetchNotesResponse, RawFetchNotesResponse, Note } from "@/types/note";
+import { User } from "@/types/user";
 
 
 export const checkServerSession = async () => {

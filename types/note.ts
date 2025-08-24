@@ -50,8 +50,3 @@ export type CheckSessionRequet = {
   success: boolean;
 }
 
-export interface User {
-username: string,
-  email: string,
-  avatar: string
-}

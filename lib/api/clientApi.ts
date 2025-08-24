@@ -1,7 +1,6 @@
 import { api } from "./api";
-
-import { Note, FetchNotesParams, RawFetchNotesResponse, FetchNotesResponse, NewNoteData, LoginRequestData, RegisterRequestData, User, UpdateUserRequest, CheckSessionRequet} from "@/types/note";
-
+import { Note, FetchNotesParams, RawFetchNotesResponse, FetchNotesResponse, NewNoteData, LoginRequestData, RegisterRequestData, UpdateUserRequest, CheckSessionRequet } from "@/types/note";
+import { User } from "@/types/user";
 
 export const fetchNotes = async ({page = 1, perPage = 12, search = '', tag}: FetchNotesParams): Promise<FetchNotesResponse> => {
     const response = await api.get<RawFetchNotesResponse>('/notes', {
