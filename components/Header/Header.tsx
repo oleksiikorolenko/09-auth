@@ -9,28 +9,26 @@ import AuthNavigation from "../AuthNavigation/AuthNavigation";
 // }
 
 
-const Header = async() => {
+const Header = () => {
  
   
-  return (<header className={css.header}>
-  <Link href="/" aria-label="Home">
-    NoteHub
-  </Link>
-  <nav aria-label="Main Navigation">
-    <ul className={css.navigation}>
-      <li>
-        <Link href="/">Home</Link>
-      </li>
-      <li>
+  return (
+    <header className={css.header}>
+      <Link href="/" aria-label="Home">
+        NoteHub
+      </Link>
+      <nav aria-label="Main Navigation">
+        <ul className={css.navigation}>
+          <li>
+            <Link href="/">Home</Link>
+          </li>
+          <TagsMenu />
         <AuthNavigation/>
-      </li>
-      <li>
-        <TagsMenu />
-      </li>
-    </ul>
-  </nav>
-</header>)
-;
+        </ul>
+      </nav>
+    </header>
+  );
+
 }
 
 export default Header;

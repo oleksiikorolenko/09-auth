@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/lib/store/authStore";
+import { updateMe } from "@/lib/api/clientApi";
 
 
 export default function EditProfile() {
@@ -32,7 +33,7 @@ export default function EditProfile() {
   <div className={css.profileCard}>
     <h1 className={css.formTitle}>Edit Profile</h1>
 
-    <Image src="avatar"
+    <Image src={user?.avatar || "https://ac.goit.global/fullstack/react/default-avatar.jpg"}
       alt="User Avatar"
       width={120}
       height={120}
@@ -50,7 +51,7 @@ export default function EditProfile() {
         />
       </div>
 
-      <p>Email: </p>
+      <p>Email:{user?.email} </p>
 
       <div className={css.actions}>
         <button type="submit" className={css.saveButton}>

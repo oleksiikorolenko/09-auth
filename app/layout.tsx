@@ -4,6 +4,7 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 import { Roboto } from "next/font/google";
+import AuthProvider from "@/components/AuthProvider/AuthProvider";
 
 
 
@@ -41,11 +42,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.variable}>
-       <TanStackProvider>
+        <TanStackProvider>
+          <AuthProvider>
           <Header />
           {modal}
           {children}
-           <Footer />
+            <Footer />
+            </AuthProvider>
           </TanStackProvider>
       </body>
     </html>

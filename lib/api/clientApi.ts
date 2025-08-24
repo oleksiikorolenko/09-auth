@@ -1,6 +1,6 @@
 import { api } from "./api";
 
-import { Note, FetchNotesParams, RawFetchNotesResponse, FetchNotesResponse, NewNoteData, LoginRequestData, RegisterRequestData, User} from "@/types/note";
+import { Note, FetchNotesParams, RawFetchNotesResponse, FetchNotesResponse, NewNoteData, LoginRequestData, RegisterRequestData, User, UpdateUserRequest, CheckSessionRequet} from "@/types/note";
 
 
 export const fetchNotes = async ({page = 1, perPage = 12, search = '', tag}: FetchNotesParams): Promise<FetchNotesResponse> => {
@@ -55,4 +55,29 @@ export const register = async (payload: RegisterRequestData) => {
     const response = await api.post<User>("/auth/register", payload);
     return response.data;
 };
+
+
+export const logout = async (): Promise<void> => {
+    await api.post("/auth/logout");
+};
+
+
+
+export const getMe = async () => {
+    const response = await api.get<User>("/users/me");
+    return response.data;
+};
+
+
+export const updateMe = async (username: UpdateUserRequest) => {
+    const response = await api.patch<User>("/users/me", username);
+    return response.data;
+};
+
+export const checkSession = async () => {
+    const response = await api.get<CheckSessionRequet>("/auth/session");
+    return response.data.success;
+};
+
+
 

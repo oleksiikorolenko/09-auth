@@ -58,8 +58,6 @@ export default function Register() {
             Register
           </button>
         </div>
-
-        <p className={css.error}>Error</p>
       </form>
       {error && <p>{error}</p>}
     </main>

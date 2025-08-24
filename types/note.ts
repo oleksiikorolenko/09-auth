@@ -37,14 +37,17 @@ export type RegisterRequestData = {
   password: string
 }
 
-// export interface RegisterRequestResponse{
-//   username: string,
-//   email: string
-// }
+export type UpdateUserRequest = {
+  username: string;
+}
 
 export type LoginRequestData = {
    email: string,
   password: string
+}
+
+export type CheckSessionRequet = {
+  success: boolean;
 }
 
 export interface User {
