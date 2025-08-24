@@ -1,6 +1,6 @@
-import api from "./api";
+import { api } from "./api";
 
-import { Note, FetchNotesParams, RawFetchNotesResponse, FetchNotesResponse, NewNoteData } from "@/types/note";
+import { Note, FetchNotesParams, RawFetchNotesResponse, FetchNotesResponse, NewNoteData, LoginRequestData, RegisterRequestData, User} from "@/types/note";
 
 
 export const fetchNotes = async ({page = 1, perPage = 12, search = '', tag}: FetchNotesParams): Promise<FetchNotesResponse> => {
@@ -41,6 +41,18 @@ console.log('fetchNotes params:', response.data);
 
 export const deleteNote = async (id: string): Promise<Note> => {
     const response = await api.delete<Note>(`/notes/${id}`);
+    return response.data;
+};
+
+
+export const login = async (payload: LoginRequestData) => {
+    const response = await api.post<User>("/auth/login", payload);
+    return response.data;
+};
+
+
+export const register = async (payload: RegisterRequestData) => {
+    const response = await api.post<User>("/auth/register", payload);
     return response.data;
 };
 

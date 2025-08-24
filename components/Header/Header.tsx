@@ -1,6 +1,7 @@
 import Link from "next/link";
 import css from "./Header.module.css";
 import TagsMenu from "../TagsMenu/TagsMenu";
+import AuthNavigation from "../AuthNavigation/AuthNavigation";
 
 
 // type Props = {
@@ -19,6 +20,9 @@ const Header = async() => {
     <ul className={css.navigation}>
       <li>
         <Link href="/">Home</Link>
+      </li>
+      <li>
+        <AuthNavigation/>
       </li>
       <li>
         <TagsMenu />

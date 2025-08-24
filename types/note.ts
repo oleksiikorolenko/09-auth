@@ -31,3 +31,24 @@ export interface RawFetchNotesResponse {
   notes: Note[];
   totalPages: number;
 }
+
+export type RegisterRequestData = {
+   email: string,
+  password: string
+}
+
+// export interface RegisterRequestResponse{
+//   username: string,
+//   email: string
+// }
+
+export type LoginRequestData = {
+   email: string,
+  password: string
+}
+
+export interface User {
+username: string,
+  email: string,
+  avatar: string
+}
