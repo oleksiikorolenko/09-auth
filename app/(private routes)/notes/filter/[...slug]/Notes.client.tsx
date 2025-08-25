@@ -23,7 +23,7 @@ export default function NotesClient({ initialNotes, tag }: Props) {
 
     const handleSearch = useDebouncedCallback((search: string) => { setDebouncedSearch(search) }, 500);
 
-  const handleSearchCange = (search: string) => {
+  const handleSearchChange = (search: string) => {
     setSearch(search);
     setPage(1);
     handleSearch(search);
@@ -45,7 +45,7 @@ export default function NotesClient({ initialNotes, tag }: Props) {
     return (
     <div className={css.app}>
       <header className={css.toolbar}>
-        <SearchBox value={search} onChange={handleSearchCange} />
+        <SearchBox value={search} onChange={handleSearchChange} />
        {data && data.total_pages > 1 && (
           <Pagination
             currentPage={page}

@@ -46,7 +46,7 @@ export type LoginRequestData = {
   password: string
 }
 
-export type CheckSessionRequet = {
+export type CheckSessionRequest = {
   success: boolean;
 }
 

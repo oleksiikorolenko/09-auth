@@ -1,5 +1,5 @@
 import { api } from "./api";
-import { Note, FetchNotesParams, RawFetchNotesResponse, FetchNotesResponse, NewNoteData, LoginRequestData, RegisterRequestData, UpdateUserRequest, CheckSessionRequet } from "@/types/note";
+import { Note, FetchNotesParams, RawFetchNotesResponse, FetchNotesResponse, NewNoteData, LoginRequestData, RegisterRequestData, UpdateUserRequest, CheckSessionRequest } from "@/types/note";
 import { User } from "@/types/user";
 
 export const fetchNotes = async ({page = 1, perPage = 12, search = '', tag}: FetchNotesParams): Promise<FetchNotesResponse> => {
@@ -34,7 +34,6 @@ export const fetchNoteById = async (id: string): Promise<Note> => {
 
 export const createNote = async (note: NewNoteData): Promise<Note> => {
     const response = await api.post<Note>('/notes', note);
-console.log('fetchNotes params:', response.data);
     return response.data;
 };
 
@@ -44,13 +43,13 @@ export const deleteNote = async (id: string): Promise<Note> => {
 };
 
 
-export const login = async (payload: LoginRequestData) => {
+export const login = async (payload: LoginRequestData): Promise<User> => {
     const response = await api.post<User>("/auth/login", payload);
     return response.data;
 };
 
 
-export const register = async (payload: RegisterRequestData) => {
+export const register = async (payload: RegisterRequestData): Promise<User> => {
     const response = await api.post<User>("/auth/register", payload);
     return response.data;
 };
@@ -62,19 +61,19 @@ export const logout = async (): Promise<void> => {
 
 
 
-export const getMe = async () => {
+export const getMe = async (): Promise<User> => {
     const response = await api.get<User>("/users/me");
     return response.data;
 };
 
 
-export const updateMe = async (username: UpdateUserRequest) => {
+export const updateMe = async (username: UpdateUserRequest): Promise<User> => {
     const response = await api.patch<User>("/users/me", username);
     return response.data;
 };
 
-export const checkSession = async () => {
-    const response = await api.get<CheckSessionRequet>("/auth/session");
+export const checkSession = async (): Promise<boolean> => {
+    const response = await api.get<CheckSessionRequest>("/auth/session");
     return response.data.success;
 };
 

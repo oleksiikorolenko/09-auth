@@ -2,7 +2,7 @@
 
 import css from "./EditProfilePage.module.css";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/lib/store/authStore";
 import { updateMe } from "@/lib/api/clientApi";
@@ -10,8 +10,15 @@ import { updateMe } from "@/lib/api/clientApi";
 
 export default function EditProfile() {
   const user = useAuthStore((state) => state.user);
-  const [username, setUsername] = useState('');
+  const setUser = useAuthStore((state) => state.setUser);
+  const [username, setUsername] = useState(user?.username || "");
   const router = useRouter();
+
+  useEffect(() => {
+    if (user?.username) {
+      setUsername(user.username);
+    }
+  }, [user]);
 
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
@@ -19,8 +26,13 @@ export default function EditProfile() {
 
   const handleSaveUser = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await updateMe({ username });
-    router.push("/profile");
+    try {
+      const updatedUser = await updateMe({ username });
+      setUser(updatedUser);
+      router.push("/profile");
+    } catch (error) {
+      console.error("Failed to udate user", error);
+    }
   };
 
   const handleBack = () => {
@@ -66,4 +78,4 @@ export default function EditProfile() {
   </div>
 </main>
     )
-}
+};
